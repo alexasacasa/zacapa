@@ -1,0 +1,55 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.App {
+  display: flex;
+  flex-direction: row;
+}
+
+.sidebear-cont {
+  background-color: #000;
+  border-right: solid 2px rgb(34, 110, 66);
+  height: 100vh;
+  padding: 20px;
+  width: 250px;
+}
+
+.side-button {
+  color: #fff;
+  background-color: transparent;
+  border: solid 2px transparent;
+  border-radius: 10px;
+  font-size: 1.2rem;
+  margin: 5px;
+  padding: 10px;
+  text-align: left;
+  width: 100%;
+}
+
+.side-button:hover {
+  border-color: rgb(27, 151, 79);
+}
+
+.side-button:active {
+  border-color: rgb(34, 110, 66);
+}
+
+.tasks-container {
+  height: 100vh;
+  padding: 20px;
+  width: 100%;
+}
+
+.task {
+  background-color: rgb(238, 238, 238);
+  margin: 15px;
+  padding: 10px 15px;
+  width: 300px;
+}
+
+.task-title {
+  background-color: rgb(168, 168, 168);
+  margin-bottom: 10px;
+}
