@@ -1,9 +1,11 @@
 import React from 'react';
 
-export default (props) => {
+function Button (props) {
   return (
-    <button className={props.class}>
+    <button onClick={props.action}>                                                                                                                                                                                                                                                                                                                                                                                                                                                             ' id={props.id}>
       {props.name}
     </button>
   )
 }
+
+export default Button;

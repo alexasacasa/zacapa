@@ -2,11 +2,13 @@ import React from 'react';
 
 export default (props) => {
   return (
-    <label for={props.id}>{props.inputName}
+    <label htmlFor={props.id}>{props.inputName}
       <textarea 
       id={props.id}
+      value={props.value}
       rows='10' cols='20'
-      name={props.name}>
+      name={props.name}
+      onChange={props.change}>
       </textarea>
     </label>
   )
