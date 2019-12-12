@@ -1,5 +1,5 @@
 import React from 'react';
-// import Task from './components/task/task';
+
 import Button from './components/buttons/button';
 import Input from './components/form/input';
 import Textarea from './components/form/textarea'
@@ -13,36 +13,41 @@ class App extends React.Component {
     this.state = {
       dashboard: "",
       tasks: [],
-      form: {
-        title: "",
-        description: "",
-        date: ""
-      },
-      taskTemplate: {
-        title: "",
-        description: "",
-        date: "",
-        id: 0,
-        complete: false
-      }
+      title: "",
+      description: "",
+      date: Date.now(),
+      deadline: "",
     }
     this.showForm = this.showForm.bind(this);
     this.handleChange = this.handleChange.bind(this)
-    this.addTask = this.addTask.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
+
   }
 
   handleChange = (event) => {
     const target = event.target;
-    const value = target.value;
+    const valueInput = target.value;
     const eventName = target.name;
-    // console.log(eventName, value)
 
-    this.setState(() => ({
-      form: {
-        ...this.state.form,
-        [eventName]: value 
-      }
-    }))
+    this.setState({
+      [eventName]: valueInput
+    },()=>{
+      // console.log(this.state)
+    })
+    /**
+     * Esto es una implementación con spreed para poder acceder a los 
+     * elementos del state cuando es un objeto 
+     * form={title:'',descript:'',date:''}
+     * 
+     * this.state(() => {
+          form: {
+            ...this.state.form,
+            [eventName]: value 
+          }
+      * }) 
+      * 
+    */
+      
     // , () => {console.log(this.state, eventName, value)})
   }
 
@@ -54,48 +59,54 @@ class App extends React.Component {
   }
 
   Form() {
-    const { title, description, date } = this.state.form
+    
     return (
       <div className='form-contain'>
-        <form className='Form'>
-          <Input value={title} inputName='title' type='text' name='title' change={this.handleChange}/>
-          <Input value={description} name='description' inputName='description' change={this.handleChange}/>
-          <Input value={date} type='date' name='date' inputName='date' change={this.handleChange}/>
+        <form className='form' onSubmit={this.handleSubmit}>
+          <label className='form-label' htmlFor='title'>Title:</label>  
+          <input className='form-input' id="title"
+            name='title' type='text'
+            onChange={this.handleChange}
+          />
+          <label className='form-label' htmlFor='description'>Description:</label>  
+          <input className='form-input' id="description"
+            name='description' type='text'
+            onChange={this.handleChange}
+          />
+          <label className='form-label' htmlFor='date'>Deadline:</label>  
+          <input className='form-input' id="deadline"
+            name='deadline' type='date'
+            onChange={this.handleChange}
+          />
+          <Button name='Create task' customStyle='form-btn' action={console.log(this.state.tasks)}/>        
         </form>
-        <Button name='Create task' action={() => {this.addTask()}}/>        
       </div>
     )
   }
 
-  addTask() {
-    let task = this.state.taskTemplate;
-    const {title, description, date} = this.state.form
-    task.title = title
-    task.description = description
-    task.date = date
-    console.log(task)
-
-    const taskComponent = () => {
+  handleSubmit(event) {
+    event.preventDefault();
+    if (this.state.title === 
+      !this.state.title) {
       return (
-        <Task 
-          title={task.title}
-          description={task.description}
-          date={task.date}
-          delete={() => this.deleteTask()}
-        />
+        new Error()
       )
     }
-
+    const newTask = {
+      title: this.state.title,
+      description: this.state.description,
+      date: new Date() ,
+      deadline: this.state.deadline
+    }
+    // console.log(newTask)
     this.setState({
-      id: this.state.id++,
-    }), () => {
-      this.setState({
-        ...form,
-        title: "",
-        description: "",
-        date: ""
-      })
-    }, () => {console.log(this.state.form, this.state.id)}
+      tasks: this.state.tasks.concat(newTask),
+      title: '',
+      description: '',
+      deadline: ''
+    })
+    console.log(this.state.tasks)
+
   }
 
   deleteTask(element) {
@@ -103,10 +114,36 @@ class App extends React.Component {
     console.log(this.state.tasks)
   }
 
-  showTasks() {}
+  showTasks() {
+    const tasks = this.state.tasks
+
+    const showTasks = (() => {
+      return (
+        tasks && tasks.map((i) => {
+          return <Task 
+            key={i.deadline}
+            customStyle='task'
+            title={i.title}
+            descrip={i.description}
+            date={i.date.toDateString()}
+            deadline={i.date}
+          />
+        })
+      )      
+    })
+    
+    this.setState({
+      dashboard: showTasks()
+    })
+
+    console.log(this.state.dashboard)
+
+  }
+
+  pendingTasks() {}
+  completedTasks() {}
 
   componentDidMount() {
-    this.showTasks();
   }
 
   render() {
@@ -115,10 +152,10 @@ class App extends React.Component {
     return (
       <div className='container'>
         <div className='sidebeard-contain'>
-          <Button name='Create new task' action={() => this.showForm()}/>
-          <Button name='All tasks' action={() => this.allTask()}/>
-          <Button name='Pending tasks' action={() => this.allTask()}/>
-          <Button name='Completed tasks' action={() => this.allTask()}/>
+          <Button name='Create new task' action={() => this.showForm()} customStyle='side-button'/>
+          <Button name='All tasks' action={() => this.showTasks()} customStyle='side-button'/>
+          <Button name='Pending tasks' action={() => this.pendingTasks()} customStyle='side-button'/>
+          <Button name='Completed tasks' action={() => this.completedTasks()} customStyle='side-button'/>
         </div>
         <div className='dashboard-contain'>
           {this.state.dashboard}

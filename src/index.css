@@ -14,7 +14,7 @@
   padding: 20px;
 }
 
-.sidebear-cont {
+.sidebeard-contain {
   background-color: #000;
   border-right: solid 2px rgb(34, 110, 66);
   height: 100vh;
@@ -61,16 +61,16 @@
 }
 
 .form-label {
+  color: #757575;
   display: block;
-  font-size: 18px;
-  font-weight: bolder;
 }
 
 .form-input {
   background-color: transparent;
-  border: solid 2px #000;
-  font-size: 18px;
-  margin: 25px;
+  border: solid 1px #aeaeae;
+  border-radius: 3px;
+  margin-left: 5%;
+  margin-top: 2%;
   padding: 10px 15px;
   width: 80%;
 }
@@ -79,6 +79,17 @@
   width: 40%;
 }
 
+.form-btn {
+  border-radius: 5px;
+  background-color: #051423;
+  border: solid 1px #051423;
+  margin: 10px;
+  padding: 10px;
+  color: #fff;
+}
+
 .Form {
-  background-color: thistle;
+  display: flex;
+  flex-direction: column;
+  padding: 5% 10%;
 }
