@@ -1,8 +1,6 @@
 import React from 'react';
 
 import Button from './components/buttons/button';
-import Input from './components/form/input';
-import Textarea from './components/form/textarea'
 import Task from './components/task/task'
 
 class App extends React.Component {
@@ -21,7 +19,7 @@ class App extends React.Component {
     this.showForm = this.showForm.bind(this);
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
-
+    this.showTasks = this.showTasks.bind(this)
   }
 
   handleChange = (event) => {
@@ -78,7 +76,7 @@ class App extends React.Component {
             name='deadline' type='date'
             onChange={this.handleChange}
           />
-          <Button name='Create task' customStyle='form-btn' action={console.log(this.state.tasks)}/>        
+          <input type='submit' value='Save task' className='form-btn' />        
         </form>
       </div>
     )
@@ -86,8 +84,7 @@ class App extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    if (this.state.title === 
-      !this.state.title) {
+    if (this.state.title === !this.state.title) {
       return (
         new Error()
       )
@@ -114,30 +111,30 @@ class App extends React.Component {
     console.log(this.state.tasks)
   }
 
-  showTasks() {
+  Tasks() {
+    console.log('here')
     const tasks = this.state.tasks
-
-    const showTasks = (() => {
-      return (
+    console.log(tasks)
+    return (
         tasks && tasks.map((i) => {
-          return <Task 
-            key={i.deadline}
-            customStyle='task'
-            title={i.title}
-            descrip={i.description}
-            date={i.date.toDateString()}
-            deadline={i.date}
-          />
-        })
-      )      
-    })
-    
+        return <Task 
+          key={`task-${i.title}`}
+          customStyle='task'
+          title={i.title}
+          descrip={i.description}
+          date={i.date.toDateString()}
+          deadline={i.date}
+        />
+      })
+    )
+
+  }
+
+  showTasks() {
     this.setState({
-      dashboard: showTasks()
+      dashboard: this.Tasks()
     })
-
     console.log(this.state.dashboard)
-
   }
 
   pendingTasks() {}
@@ -159,6 +156,7 @@ class App extends React.Component {
         </div>
         <div className='dashboard-contain'>
           {this.state.dashboard}
+          
         </div>
       </div>
     )

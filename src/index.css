@@ -91,5 +91,5 @@
 .Form {
   display: flex;
   flex-direction: column;
-  padding: 5% 10%;
+  margin: 50px;
 }
