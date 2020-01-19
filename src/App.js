@@ -1,166 +1,22 @@
-import React from 'react';
+import React from 'react'
+import { BrowserRouter, Switch, Route } from 'react-router-dom'
+import Layout from './components/layout'
 
-import Button from './components/buttons/button';
-import Task from './components/task/task'
+import Home from './pages/home'
+import About from './pages/about'
+import Projects from './pages/projects'
 
-class App extends React.Component {
-
-  constructor(props) {
-
-    super(props);
-    this.state = {
-      dashboard: "",
-      tasks: [],
-      title: "",
-      description: "",
-      date: Date.now(),
-      deadline: "",
-    }
-    this.showForm = this.showForm.bind(this);
-    this.handleChange = this.handleChange.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)
-    this.showTasks = this.showTasks.bind(this)
-  }
-
-  handleChange = (event) => {
-    const target = event.target;
-    const valueInput = target.value;
-    const eventName = target.name;
-
-    this.setState({
-      [eventName]: valueInput
-    },()=>{
-      // console.log(this.state)
-    })
-    /**
-     * Esto es una implementación con spreed para poder acceder a los 
-     * elementos del state cuando es un objeto 
-     * form={title:'',descript:'',date:''}
-     * 
-     * this.state(() => {
-          form: {
-            ...this.state.form,
-            [eventName]: value 
-          }
-      * }) 
-      * 
-    */
-      
-    // , () => {console.log(this.state, eventName, value)})
-  }
-
-  showForm () {
-    const form = this.Form();
-    this.setState({
-      dashboard: form
-    })
-  }
-
-  Form() {
-    
-    return (
-      <div className='form-contain'>
-        <form className='form' onSubmit={this.handleSubmit}>
-          <label className='form-label' htmlFor='title'>Title:</label>  
-          <input className='form-input' id="title"
-            name='title' type='text'
-            onChange={this.handleChange}
-          />
-          <label className='form-label' htmlFor='description'>Description:</label>  
-          <input className='form-input' id="description"
-            name='description' type='text'
-            onChange={this.handleChange}
-          />
-          <label className='form-label' htmlFor='date'>Deadline:</label>  
-          <input className='form-input' id="deadline"
-            name='deadline' type='date'
-            onChange={this.handleChange}
-          />
-          <input type='submit' value='Save task' className='form-btn' />        
-        </form>
-      </div>
-    )
-  }
-
-  handleSubmit(event) {
-    event.preventDefault();
-    if (this.state.title === !this.state.title) {
-      return (
-        new Error()
-      )
-    }
-    const newTask = {
-      title: this.state.title,
-      description: this.state.description,
-      date: new Date() ,
-      deadline: this.state.deadline
-    }
-    // console.log(newTask)
-    this.setState({
-      tasks: this.state.tasks.concat(newTask),
-      title: '',
-      description: '',
-      deadline: ''
-    })
-    console.log(this.state.tasks)
-
-  }
-
-  deleteTask(element) {
-    this.state.tasks.remove(element)
-    console.log(this.state.tasks)
-  }
-
-  Tasks() {
-    console.log('here')
-    const tasks = this.state.tasks
-    console.log(tasks)
-    return (
-        tasks && tasks.map((i) => {
-        return <Task 
-          key={`task-${i.title}`}
-          customStyle='task'
-          title={i.title}
-          descrip={i.description}
-          date={i.date.toDateString()}
-          deadline={i.date}
-        />
-      })
-    )
-
-  }
-
-  showTasks() {
-    this.setState({
-      dashboard: this.Tasks()
-    })
-    console.log(this.state.dashboard)
-  }
-
-  pendingTasks() {}
-  completedTasks() {}
-
-  componentDidMount() {
-  }
-
-  render() {
-    // const showForm = this.state.form;
-
-    return (
-      <div className='container'>
-        <div className='sidebeard-contain'>
-          <Button name='Create new task' action={() => this.showForm()} customStyle='side-button'/>
-          <Button name='All tasks' action={() => this.showTasks()} customStyle='side-button'/>
-          <Button name='Pending tasks' action={() => this.pendingTasks()} customStyle='side-button'/>
-          <Button name='Completed tasks' action={() => this.completedTasks()} customStyle='side-button'/>
-        </div>
-        <div className='dashboard-contain'>
-          {this.state.dashboard}
-          
-        </div>
-      </div>
-    )
-  } 
+function App() {
+  return(
+    <BrowserRouter>
+      <Layout />
+      <Switch>
+        <Route path='/' component={Home} exact />
+        <Route path='/about-me' component={About} excat />
+        <Route path='/projects' component={Projects} exact />
+      </Switch>
+    </BrowserRouter>
+  )
 }
 
-export default App;
+export default App

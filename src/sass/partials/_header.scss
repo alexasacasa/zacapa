@@ -1,0 +1,45 @@
+.main-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 2%;
+}
+
+.header__logo {
+  display: inline-block;
+  height: 30px;
+  width: 30px;
+}
+
+.header-nav {
+  align-self: center;
+  width: 80%;
+  @media (min-width: $breakpoint-laptop) {
+    width: 60%
+  }
+}
+
+.main-nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.main-nav__item {
+  @media (min-width: $breakpoint-tablet) {
+    margin-left: 15%;
+  }
+}
+
+.main-nav__link {
+  color: $black;
+  font-size: .999rem;
+  width: 28%;
+  text-decoration: none;
+
+  @media (min-width: $breakpoint-tablet) {
+    &:hover {
+      font-weight: 500;
+    }
+  }
+}

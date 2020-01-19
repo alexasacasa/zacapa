@@ -1,0 +1,70 @@
+.home-wrapper{
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.home-asd {
+  position: absolute;
+  top: 30%;
+
+  @media (min-width: $breakpoint-laptop) {
+    left: 10%;
+  }
+}
+
+.home__title {
+  font-size: 3.5rem;
+  font-weight: 800;
+
+  span {
+    display: inline-block;
+  }
+}
+.home__sub {
+  font-size: 1.1rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.home__link {
+  margin: 2%;
+  display: inline-block;
+  text-decoration: none;
+  color: #000;
+
+  @media (min-width: $breakpoint-laptop) {
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.flower-svg {
+  align-self: flex-end;
+  height: 300px;
+  margin-top: 5em;
+  width: 50%;
+
+  @media (min-width: $breakpoint-laptop) {
+    margin: 3em;
+  }
+
+}
+
+.draw-stroke {
+  stroke-dashoffset: 1000;
+  stroke-dasharray: 1000;
+  stroke: #000;
+  animation: dash 15s linear forwards;
+
+  path {
+    fill: none;
+  }
+}
+
+@keyframes dash {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
