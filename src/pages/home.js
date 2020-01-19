@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
 import { useSpring, animated } from 'react-spring'
 import Social from '../components/social'
