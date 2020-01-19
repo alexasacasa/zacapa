@@ -1,8 +1,6 @@
-import React, { useState } from 'react'
+import React from 'react'
 
-function Flower(props) {
-  const [ animation, setAnimation ] = useState(false)
-
+function Flower() {
   return(
     <svg className='flower-svg' >
       <g className='draw-stroke'>
