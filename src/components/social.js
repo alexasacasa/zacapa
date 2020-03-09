@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Social() {
+function Social({children}) {
   return(
     <div className='social--wrapper'>
       <a className='social-item__link' href='https://www.linkedin.com/in/alejandra-sacasa-0aa238169/'>

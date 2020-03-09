@@ -2,14 +2,16 @@
   align-items: center;
   display: flex;
   flex-direction: column;
+  padding: 5rem 0;
+
+  @media (min-width: 420px) {
+    flex-direction: row;
+  }
 }
 
 .home-asd {
-  position: absolute;
-  top: 30%;
-
   @media (min-width: $breakpoint-laptop) {
-    left: 10%;
+    padding-left: 5rem;
   }
 }
 
@@ -23,15 +25,16 @@
 }
 .home__sub {
   font-size: 1.1rem;
+  font-weight: 300;
   letter-spacing: 2px;
   text-transform: uppercase;
 }
 
 .home__link {
-  margin: 2%;
+  color: rgb(224, 40, 111);
   display: inline-block;
+  margin: 2%;
   text-decoration: none;
-  color: #000;
 
   @media (min-width: $breakpoint-laptop) {
     &:hover {
@@ -41,13 +44,23 @@
 }
 
 .flower-svg {
-  align-self: flex-end;
   height: 300px;
+  left: 55%;
   margin-top: 5em;
+  position: absolute;
+  top: 15%;
   width: 50%;
 
-  @media (min-width: $breakpoint-laptop) {
+  @media (min-width: $breakpoint-tablet) {
+    left: 50%;
     margin: 3em;
+    width: 25%
+  }
+
+  @media (min-width: $breakpoint-laptop) {
+    left: 60%;
+    position: absolute;
+    top: 20%;
   }
 
 }

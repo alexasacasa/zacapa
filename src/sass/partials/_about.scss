@@ -1,12 +1,4 @@
-.wrapper-about {
-  padding: 10% 0;
-  @media (min-width: $breakpoint-laptop) {
-    padding-top: 5%;
-  }
-}
-
 .about--info {
-  margin: 3%;
   width: 95%;
 
   @media (min-width: $breakpoint-laptop) {

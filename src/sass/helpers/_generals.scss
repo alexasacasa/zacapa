@@ -8,7 +8,6 @@ body {
   color: $black;
   font-family: $font-fam;
   font-size: .999rem;
-  font-weight: 100;
 }
 
 img {
@@ -53,5 +52,11 @@ img {
 
 li {
   list-style: none;
+}
+
+footer {
+  font-size: .8rem;
+  font-weight: 100;
+  text-align: center;
 }
 
