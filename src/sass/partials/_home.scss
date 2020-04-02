@@ -7,27 +7,23 @@
   @media (min-width: 420px) {
     flex-direction: row;
   }
-}
 
-.home-asd {
   @media (min-width: $breakpoint-laptop) {
-    padding-left: 5rem;
+    p {
+      width: 40rem;
+    }
   }
+
 }
 
 .home__title {
-  font-size: 3.5rem;
-  font-weight: 800;
-
   span {
     display: inline-block;
   }
 }
-.home__sub {
-  font-size: 1.1rem;
-  font-weight: 300;
-  letter-spacing: 2px;
-  text-transform: uppercase;
+
+.home__media {
+  padding-top: 2rem;
 }
 
 .home__link {
@@ -40,44 +36,5 @@
     &:hover {
       text-decoration: underline;
     }
-  }
-}
-
-.flower-svg {
-  height: 300px;
-  left: 55%;
-  margin-top: 5em;
-  position: absolute;
-  top: 15%;
-  width: 50%;
-
-  @media (min-width: $breakpoint-tablet) {
-    left: 50%;
-    margin: 3em;
-    width: 25%
-  }
-
-  @media (min-width: $breakpoint-laptop) {
-    left: 60%;
-    position: absolute;
-    top: 20%;
-  }
-
-}
-
-.draw-stroke {
-  stroke-dashoffset: 1000;
-  stroke-dasharray: 1000;
-  stroke: #000;
-  animation: dash 15s linear forwards;
-
-  path {
-    fill: none;
-  }
-}
-
-@keyframes dash {
-  to {
-    stroke-dashoffset: 0;
   }
 }

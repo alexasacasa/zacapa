@@ -41,3 +41,17 @@
   width: 28%;
   text-decoration: none;
 }
+
+.main-nav__link:after {
+  border-bottom: 3px solid $dark-green;
+  content: "";
+  display: block;
+  margin: .3em auto 0;
+  transition: width 250ms ease-in-out 0s;
+  width: 0;
+}
+
+.main-nav__link:hover:after {
+  transition: width 100ms ease-in-out 0s;
+  width: 100%;
+}

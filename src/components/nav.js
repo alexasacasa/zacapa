@@ -9,9 +9,6 @@ export default (props) => {
           <Link className='main-nav__link' to='/'>Home</Link>
         </li>
         <li className='main-nav__item'>
-          <Link className='main-nav__link' to='/about-me'>About me</Link>
-        </li>
-        <li className='main-nav__item'>
           <Link className='main-nav__link' to='/projects'>Projects</Link>
         </li>
       </ul>

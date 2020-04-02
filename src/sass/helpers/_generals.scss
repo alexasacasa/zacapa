@@ -10,11 +10,6 @@ body {
   font-size: .999rem;
 }
 
-img {
-  height: auto;
-  width: 100%;
-}
-
 .main-wrapper{
   margin: 0 auto;
   padding: 3% 4%;
@@ -30,19 +25,14 @@ img {
     max-width: 960px;
   }
   @media (min-width: $breakpoint-desktop) {
-    max-width: 1100px;
+    max-width: 1000px;
     padding: 5%;
   }
 }
 
-h1 {
-  font-size: 3.5rem;
-  font-weight: 800;
-}
-
 p {
   line-height: 28px;
-  margin-top: 4%;
+  margin-top: .8rem;
 }
 
 img {
